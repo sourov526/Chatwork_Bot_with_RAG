@@ -3,7 +3,7 @@ import openai
 import time
 # API tokens
 CHATWORK_API_TOKEN = 'your_chatwork_api_token'
-OPENAI_API_KEY = 'your_openai_api_key'
+OPENAI_API_KEY = 'openai_api_key' # github do not permit to push secret key
 CHATWORK_ROOM_ID = 'your_chatwork_room_id'  # Replace with the ID of your chat room
 # Initialize OpenAI API
 openai.api_key = OPENAI_API_KEY
