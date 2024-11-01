@@ -1,11 +1,14 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "api/chatwork_bot.py", "use": "@vercel/python" }
-  ],
-  "env": {
-    "CHATWORK_API_TOKEN": "@CHATWORK_API_TOKEN",
-    "OPENAI_API_KEY": "@OPENAI_API_KEY",
-    "CHATWORK_ROOM_ID": "@CHATWORK_ROOM_ID"
+    "version": 2,
+    "builds": [
+      { "src": "api/chatwork_bot.py", "use": "@vercel/python@3.9" }
+    ],
+    "routes": [
+      { "src": "/api/chatwork_bot", "dest": "api/chatwork_bot.py" }
+    ],
+    "env": {
+      "CHATWORK_API_TOKEN": "@CHATWORK_API_TOKEN",
+      "OPENAI_API_KEY": "@OPENAI_API_KEY",
+      "CHATWORK_ROOM_ID": "@CHATWORK_ROOM_ID"
+    }
   }
-}
