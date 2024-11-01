@@ -1,7 +1,7 @@
 {
     "version": 2,
     "builds": [
-      { "src": "api/get_messages.py", "use": "@vercel/python" }
+      { "src": "api/chatwork_bot.py", "use": "@vercel/python" }
     ],
     "env": {
       "CHATWORK_API_TOKEN": "@chatwork_api_token",
