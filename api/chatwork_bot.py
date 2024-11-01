@@ -2,6 +2,7 @@ import requests
 import openai
 import os
 from dotenv import load_dotenv
+import time
 
 load_dotenv()
 
@@ -38,16 +39,26 @@ def generate_openai_response(message):
     )
     return response.choices[0].message['content']
 
-def handler(request):
+def main():
+    processed_message_ids = set()
     messages = get_chatwork_messages()
-    processed_message_ids = set()  # For example, store this in a database in production
-    responses = []
+    print("Received messages:", len(messages))
     for message in messages:
         message_id = message['message_id']
         message_text = message['body']
+
+        # Only respond to new messages
         if message_id not in processed_message_ids:
+            print(f"New message: {message_text}")
+            # Generate a response using OpenAI
             response_text = generate_openai_response(message_text)
+            # Send the response back to Chatwork
             send_chatwork_message(response_text)
+            # Mark this message as processed
             processed_message_ids.add(message_id)
-            responses.append({"id": message_id, "response": response_text})
-    return {"status": "success", "responses": responses}
+
+        # Optional delay to avoid rapid requests (adjust as needed)
+        time.sleep(3)
+
+if __name__ == "__main__":
+    main()
