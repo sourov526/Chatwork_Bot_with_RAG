@@ -1,7 +1,11 @@
 {
-    "functions": {
-     "api/*.py": {
-      "runtime": "python3.9"
-     }
+    "version": 2,
+    "builds": [
+      { "src": "api/get_messages.py", "use": "@vercel/python" }
+    ],
+    "env": {
+      "CHATWORK_API_TOKEN": "@chatwork_api_token",
+      "OPENAI_API_KEY": "@openai_api_key",
+      "CHATWORK_ROOM_ID": "@chatwork_room_id"
     }
-   }
+  }
