@@ -1,7 +1,9 @@
-import requests
 import openai
 import os
+from dotenv import load_dotenv
 import time
+
+load_dotenv()
 
 CHATWORK_API_TOKEN = os.getenv('CHATWORK_API_TOKEN')
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
